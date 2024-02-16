@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Trusted Party Secure Session Creator</title>
+  <link rel="icon" type="image" href="{{ logo }}" alt="{{ organization }} logo">
+
+  <script type="text/javascript" src="app/helper/object.assign-polyfill.js"></script>
+  <script type="text/javascript" src="app/config/common.js"></script>
+  <script data-main="app/session" src="app/vendor/require.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+        integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/Ladda/1.0.0/ladda-themeless.min.css"
+        integrity="sha256-d7VZTlP9P3ZTCZ3Bkl8aGZ/+Vs4i+bpcOGNfibU7+LU=" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.10.0/css/alertify.min.css"
+        integrity="sha256-bNEFYRlNlnu0CH4DIKCXv0F6JVl/DdA2M9XVZn317q0=" crossorigin="anonymous"/>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/AlertifyJS/1.10.0/css/themes/bootstrap.min.css"
+        integrity="sha256-vt37wNLVK8ICNWGrl+1MLb+pjq33sn6v37Q/7OPgkSU=" crossorigin="anonymous"/>
+
+  <link rel="stylesheet" href="/styles/style.css">
+
+</head>
+<body>
+<header>
+  <div class="container">
+    <h1>Trusted Party<br/>
+      <small>Secure Session Creator</small>
+    </h1>
+    <div id="logos">
+      <img src="{{ logo }}" alt="{{ organization}} Logo"/>
+      <img src="images/bu.gif" alt="BU Logo"/>
+    </div>
+  </div>
+</header>
+<div id="shadow" class="ss-style-multitriangles"></div>
+<main id="content" class="container">
+
+  <div class="row">
+    <section id="session-creation" class="card col-md-10 col-md-offset-1 collapse in">
+      <h2 class="text-center">Create a new session</h2>
+      <p class="text-center">
+      <hr/>
+      <form class="form-horizontal">
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="session-title">Session title</label>
+          <div class="col-sm-9">
+            <input type="text" id="session-title" class="form-control" placeholder="{{ organization }} Data Submission"
+                   autocomplete="off" required/>
+            <span id="title-success" class="success-icon glyphicon glyphicon-ok form-control-feedback hidden"
+                  aria-hidden="true"></span>
+            <span id="title-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                  aria-hidden="true"></span>
+            <span id="title-fail-help"
+                  class="fail-help help-block hidden">Please input the session title.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <label class="col-sm-3 control-label" for="session-description">Session description</label>
+          <div class="col-sm-9">
+          <textarea id="session-description" class="form-control" rows="10" placeholder="Description"
+                    maxlength="4096"></textarea>
+            <span id="description-success"
+                  class="success-icon glyphicon glyphicon-ok form-control-feedback hidden"
+                  aria-hidden="true"></span>
+            <span id="description-fail" class="fail-icon glyphicon glyphicon-remove form-control-feedback hidden"
+                  aria-hidden="true"></span>
+            <span id="description-fail-help"
+                  class="fail-help help-block hidden">Please input the session description.</span>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-offset-3 col-sm-9">
+            <button type="submit" id="generate" class="btn btn-primary btn-lg">Generate session</button>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+
+  <div class="row">
+    <section id="session-details" class="card col-md-10 col-md-offset-1 collapse">
+      <h2 class="text-center">Session details</h2>
+      <hr/>
+      <h3 id="sessionKeyID"> {{ session_key }} </h3>
+      <p>The {{ session_key }} is a unique identifier for this session. It will be provided to participants as well. Please record this in order to manage the session and verify that participants are in the correct session.</p>
+      <pre id="sessionID"></pre>
+      <h3>Session Password <span class='glyphicon glyphicon-lock'></span></h3>
+      <p>The session password is required in order to manage the session. This includes adding participants, changing the session status, and receiving results. <span class="font-weight-bold">Do not share your password with anyone.</p></p>
+      <pre id="passwordID"></pre>
+      <h3>Private Key <span class='glyphicon glyphicon-lock'></span></h3>
+      <p>The private key is required to receive results. Without it, none of the data will be accessible. <span class="font-weight-bold">Do not share your private key with anyone.</p></p>
+      <pre id="privkeyID"></pre>
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" id="verify" name="verify">I have saved the {{ session_key }}, session password, and private key in a secure location.
+        </label>
+      </div>
+
+      <div class="row">
+          <div class="col-md-12">
+            <a id="link-id" href="/manage"><button type="submit" id="submit" class="btn btn-primary ladda-button btn-lg btn-block" disabled>Proceed to Manage Session
+            </button></a>
+          </div>
+        </div>
+
+    </section>
+  </div>
+
+</main>
+</body>
+</html>

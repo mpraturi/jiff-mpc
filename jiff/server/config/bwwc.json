@@ -1,0 +1,25 @@
+{
+  "template": "../client/app/data/bwwc",
+  "MAX_SIZE": 10000,
+
+  "webRootPath": "/tmp/acme-challenges",
+  "approveDomainsPattern": "^([A-Za-z0-9]+.)?100talent.org$",
+  "approveDomainsOpts": {
+    "domains": [
+      "www.100talent.org",
+      "100talent.org"
+    ],
+    "email": "hicsail@bu.edu",
+    "agreeTos": true
+  },
+
+  "client": {
+    "table_template": "data/bwwc",
+    "organization": "Boston Women's Workforce Council",
+    "subtitle": "100% Talent Data Submission",
+    "logo": "images/bwwc.png",
+    "cohort": "Industry",
+    "session_key": "BWWC 2023 Submission ID",
+    "email": "team@thebwwc.org"
+  }
+}

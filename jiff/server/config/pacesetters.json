@@ -1,0 +1,24 @@
+{
+  "template": "../client/app/data/pacesetters",
+  "MAX_SIZE": 10000,
+
+  "webRootPath": "/tmp/acme-challenges",
+  "approveDomainsPattern": "^([A-Za-z0-9]+.)?pacesetters.org$",
+  "approveDomainsOpts": {
+    "domains": [
+      "www.pacesettersdata.org",
+      "pacesettersdata.org"
+    ],
+    "email": "hicsail@bu.edu",
+    "agreeTos": true
+  },
+
+  "client": {
+    "table_template": "data/pacesetters",
+    "organization": "Pacesetters",
+    "subtitle": "Data Submission",
+    "logo": "images/gbcc.png",
+    "cohort": "Cohort",
+    "session_key": "Pacesetters 2021 Submission ID"
+  }
+}

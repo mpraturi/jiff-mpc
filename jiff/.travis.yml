@@ -1,0 +1,24 @@
+language: node_js
+node_js: "stable"
+
+dist: xenial
+
+addons:
+  firefox: latest
+  chrome: stable
+
+before_script:
+  - "export DISPLAY=:99.0"
+  - fluxbox >/dev/null 2>&1 &
+  - node server/index.js > server.txt & 
+
+services:
+  - mongodb
+  - xvfb
+
+install:
+  - cd jiff && npm install && cd ..
+  - npm install
+
+script:
+  - npm test
